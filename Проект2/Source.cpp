@@ -1,6 +1,5 @@
 //максимальне з 4 числ
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -17,6 +16,6 @@ int main() {
 
 	cout << "Max nubber: " << max << endl;
 
-	_getch();
+	system("pause");
 	return 0;
 }
