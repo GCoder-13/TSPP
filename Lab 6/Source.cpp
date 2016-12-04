@@ -1,3 +1,4 @@
+//Лаб-6. Перевантаження бінарних операторів
 #include <iostream>
 
 using namespace std;
@@ -9,16 +10,11 @@ class Vector
 	public:
 		Vector() : x(0), y(0), z(0) {};
 		Vector(int xx, int yy, int zz): x(xx), y(yy), z(zz) {};
-		void cInput()
-		{
-			cout << "Input vector (x,y,z): ";
-			cin >> x >> y >> z;
-		};
 		Vector operator+(Vector &p);
 		Vector operator+(int a);
 		friend ostream& operator<<(ostream& os,Vector &p);
+		friend istream& operator>>(istream& is, Vector &p);
 };
-
 
 Vector Vector::operator+(Vector &p)
 {
@@ -49,15 +45,21 @@ ostream& operator<<(ostream& os,Vector &p)
 	return os;
 }
 
+istream& operator>>(istream& is, Vector &p)
+{
+	cin >> p.x >> p.y >> p.z;
+	return is;
+}
+
 int main()
 {
 	system("color f0");
 	Vector vek1,vek2,vek3;
 
-	cout << "Vector 1:" << endl;
-	vek1.cInput();
-	cout << endl << "Vector 2:" << endl;
-	vek2.cInput();
+	cout << "Input vek1(x,y,z): ";
+	cin >> vek1;
+	cout << "Input vek2(x,y,z): ";
+	cin >> vek2;
 
 	vek3 = vek1 + vek2;
 	cout << endl << "The sum of two vectors: " << vek3 << endl;
