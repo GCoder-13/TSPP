@@ -14,6 +14,7 @@ public:
 	Rhomb() : Pi(3.14159), d1(3), d2(4) { count++; };
 	Rhomb(double dd1, double dd2) : d1(dd1), d2(dd2), Pi(3.14159) { count++; };
 	Rhomb(Rhomb &copy) : d1(copy.d1), d2(copy.d2), Pi(3.14159) { count++; };
+	~Rhomb() { count--; };
 	void Input();
 	double Square()
 	{
