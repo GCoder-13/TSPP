@@ -1,4 +1,4 @@
-//Лаб-6. Перевантаження логічних операторів
+//Лаб-7. Перевантаження логічних операторів
 #include <iostream>
 
 using namespace std;
@@ -64,25 +64,17 @@ bool operator||(Vector Lp, Vector Rp)
 int main()
 {
 	system("color f0");
-	Vector vek1, vek2, vek3;
+	Vector vek1, vek2;
 
 	cout << "Input vek1(x,y,z): ";
 	cin >> vek1;
 	cout << "Input vek2(x,y,z): ";
 	cin >> vek2;
-
-	vek3 = vek1 + vek2;
-	cout << endl << "The sum of two vectors: " << vek3 << endl << endl;
-
+	
+	cout << endl << endl;
 	if (vek1 || vek2)
 		cout << "Vectors vek1 and vek2 intersect";
 	else cout << "Vectors vek1 and vek2 not intersect";
-
-	vek3 = vek1 + 4;
-	cout << endl << endl << "(vek1 + 4) = " << vek3 << endl;
-
-	vek3 = 2 + vek2;
-	cout << "(2 + vek2) = " << vek3 << endl;
 
 	system("pause");
 	return 0;
