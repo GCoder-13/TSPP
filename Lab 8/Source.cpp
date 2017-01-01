@@ -71,7 +71,7 @@ Vector& Vector::operator++()
 int main()
 {
 	system("color f0");
-	Vector A;
+	Vector A , C;
 
 	cout << "Input vector A(x,y,z): ";
 	cin >> A;
@@ -79,6 +79,9 @@ int main()
 	++A;
 
 	cout << "\t A= " << A << endl;
+	C=++A;
+
+	cout << "\t C= " << C << endl;
 
 	system("pause");
 	return 0;
