@@ -4,6 +4,8 @@
 #define _HEADER_H_
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <string>
 
 using namespace sf;
 
@@ -17,7 +19,16 @@ public:
 	Vector2f Coord() const;
 };
 
-class Triangl : public Point
+class Name_autor
+{
+private:
+	std::string Name;
+public:
+	Name_autor();
+	void NaText(RenderWindow& w);
+};
+
+class Triangl : public Name_autor, public Point
 {
 private:
 	Point b, c;

@@ -3,11 +3,8 @@
 int main()
 {
 	RenderWindow window(VideoMode(700, 400), "Lab 9");
-	RectangleShape Rt;
-	Rt.setSize(Vector2f(700, 400));
-	Rt.setFillColor(Color::Cyan);
 
-	const Triangl tr(250,10,30,350,600,250);
+	Triangl tr(250,10,30,350,600,250);
 
 	while (window.isOpen())
 	{
@@ -18,9 +15,9 @@ int main()
 				window.close();
 		}
 
-		window.clear();
-		window.draw(Rt);
+		window.clear(Color::Cyan);
 		window.draw(tr.TrGet());
+		tr.NaText(window);
 		window.display();
 	}
 

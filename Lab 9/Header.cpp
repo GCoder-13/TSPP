@@ -20,3 +20,15 @@ ConvexShape Triangl::TrGet() const
 	Tr.setFillColor(Color::Red);
 	return Tr;
 }
+
+Name_autor::Name_autor() : Name("Khomutovskiy Andriy") {}
+
+void Name_autor::NaText(RenderWindow& w)
+{
+	Font font;
+	font.loadFromFile("impact.ttf");
+	Text autor(Name, font, 20);
+	autor.setFillColor(Color::Black);
+	autor.setPosition(Vector2f(500, 5));
+	w.draw(autor);
+}
