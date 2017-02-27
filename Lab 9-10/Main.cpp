@@ -4,7 +4,7 @@ int main()
 {
 	RenderWindow window(VideoMode(700, 400), "Lab 9");
 
-	Triangl tr(250,10,30,350,600,250);
+	Triangl tr(250,10,30,350,600,250, "Khomutovskiy Andriy");
 
 	while (window.isOpen())
 	{

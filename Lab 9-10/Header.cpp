@@ -9,7 +9,7 @@ Vector2f Point::Coord() const
 	return Vector2f(x,y);
 }
 
-Triangl::Triangl(int xa, int ya, int xb, int yb, int xc, int yc) : Point(xa, ya), b(xb, yb), c(xc, yc) {}
+Triangl::Triangl(int xa, int ya, int xb, int yb, int xc, int yc, std::string name) : Point(xa, ya), b(xb, yb), c(xc, yc), Name_autor(name) {}
 
 ConvexShape Triangl::TrGet() const
 {
@@ -21,7 +21,7 @@ ConvexShape Triangl::TrGet() const
 	return Tr;
 }
 
-Name_autor::Name_autor() : Name("Khomutovskiy Andriy") {}
+Name_autor::Name_autor(const std::string name) : Name(name) {}
 
 void Name_autor::NaText(RenderWindow& w)
 {

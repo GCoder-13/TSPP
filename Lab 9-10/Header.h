@@ -24,7 +24,7 @@ class Name_autor
 private:
 	std::string Name;
 public:
-	Name_autor();
+	Name_autor(const std::string name);
 	void NaText(RenderWindow& w);
 };
 
@@ -33,7 +33,7 @@ class Triangl : public Name_autor, public Point
 private:
 	Point b, c;
 public:
-	Triangl(int xa, int ya, int xb, int yb, int xc, int yc);
+	Triangl(int xa, int ya, int xb, int yb, int xc, int yc, std::string name);
 	ConvexShape TrGet() const;
 };
 
