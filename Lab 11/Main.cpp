@@ -1,12 +1,17 @@
-#include "Header.h"
+#include <windows.h>
 #include <sstream>
 #include <iomanip>
+#include "Header.h"
 
 int main()
 {
+
+	HWND hWnd = GetConsoleWindow();
+	ShowWindow(hWnd, SW_HIDE);
+
 	RenderWindow window(sf::VideoMode(800, 550), "Lab 11");
 
-	IsoscelesTrapezoid Trapeze(150, 150, 100, 180, 100);
+	IsoscelesTrapezoid Trapeze(150, 150, 130, 250, 100);
 	Font font;
 	font.loadFromFile("impact.ttf");
 	
@@ -27,8 +32,9 @@ int main()
 				window.close();
 		}
 
-		window.clear(Color(200, 200, 200, 255));
+		window.clear(Color::White);
 		Trapeze.draw(window);
+		Trapeze.move();
 		window.draw(text);
 		window.display();
 	}

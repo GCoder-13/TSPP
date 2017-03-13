@@ -27,6 +27,29 @@ void IsoscelesTrapezoid::draw(RenderWindow & w) const
 	w.draw(tr);
 }
 
+void IsoscelesTrapezoid::move()
+{
+	if (Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		x--;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Right))
+	{
+		x++;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Up))
+	{
+		y--;
+	}
+
+	if (Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		y++;
+	}
+}
+
 double IsoscelesTrapezoid::area()
 {
 	return (Rectangle::area() + (2 * RectangularTriangle::area()));

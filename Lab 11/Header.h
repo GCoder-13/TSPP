@@ -13,7 +13,7 @@ public:
 	Point(const int _x, const int _y) : x(_x), y(_y) {};
 	operator Vector2f() const;
 	virtual void draw(RenderWindow &w) const = 0;
-	//virtual void move() = 0;
+	virtual void move() = 0;
 	virtual double area() = 0;
 };
 
@@ -46,7 +46,7 @@ public:
 	IsoscelesTrapezoid(const int x, const int y, const double baseTop, const double baseDown, const double hight) :
 		Point(x, y), Rectangle(baseTop, hight), RectangularTriangle(hight, ((baseDown - baseTop) / 2)), baseDown(baseDown) {};
 	virtual void draw(RenderWindow &w) const;
-	//virtual void move();
+	virtual void move();
 	virtual double area();
 };
 
