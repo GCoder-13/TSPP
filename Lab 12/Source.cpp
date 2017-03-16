@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 #include <cmath>
 
 using namespace std;
@@ -20,7 +19,7 @@ int Func(T* arr, const size_t length)
 int main(int argc, char** argv)
 {
 	const size_t MAX = 5;
-	double arr[MAX] = { 12.3, 5, -25.5 , -15.0, 25.0 };
+	double arr[MAX] = { 120, 5, -25.5 , -15.0, 25.0 };
 
 	cout << "Number of array elements that are multiples of 5: " << Func(arr, MAX) << endl;
 
