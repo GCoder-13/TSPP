@@ -2,20 +2,35 @@
 #define _HEADER_H_
 
 #include <cmath>
+using namespace std;
+
+const double PI = atan(1.0) * 4;
+
+double degree(const double radian)
+{
+	return ((180 / PI)*radian);
+}
+
+double radian(const double degree)
+{
+	return ((PI / 180)*degree);
+}
 
 template<typename T>
 class Polygon
 {
 protected:
-	int nSides;
-	T length;
-	T apofema;
+	int sides;
+	T radius;
 public:
-	Polygon() : nSides(3), length(0), apofema(0) {};
-	Polygon(const int nSides, const T length, const T apofema) : nSides(nSides), length(length), apofema(apofema) {};
-	T perimeter();
-	T area();
-	T diagonal();
+	Polygon() : sides(3), radius(0) {};
+	Polygon(const int sides, const T radius) : sides(sides), radius(radius) {};
+	double angle() { return (360.0 / sides); }
+	double length();
+	double apofema();
+	double perimeter();
+	double area();
+	double diagonal();
 };
 
 template<typename T>
@@ -25,46 +40,58 @@ private:
 	T hight;
 public:
 	Prism() :  hight(0) {}
-	Prism(const int nSides, const T length, const T apofema, const T hight) : Polygon<T>(nSides, length, apofema), hight(hight) {};
-	T area();
-	T volume();
-	T diagonal();
+	Prism(const int sides, const T radius, const T hight) : Polygon<T>(sides, radius), hight(hight) {};
+	double area();
+	double volume();
+	double diagonal();
 };
 
 template<typename T>
-inline T Polygon<T>::perimeter()
+inline double Polygon<T>::length()
 {
-	return T(nSides * length);
+	return (radius * 2 * sin(radian(180.0 / sides)));
 }
 
 template<typename T>
-inline T Polygon<T>::area()
+inline double Polygon<T>::apofema()
 {
-	return T((perimeter() / 2) * apofema);
+	return (sqrt(pow(radius, 2) - pow((length() / 2), 2)));
 }
 
 template<typename T>
-inline T Polygon<T>::diagonal()
+inline double Polygon<T>::perimeter()
 {
-	return T(sqrt(pow((length / 2), 2) + pow(apofema, 2)));
+	return (sides * length());
 }
 
 template<typename T>
-inline T Prism<T>::area()
+inline double Polygon<T>::area()
 {
-	return T(2 * Polygon<T>::area() + Polygon<T>::perimeter() * hight);
+	return ((perimeter() / 2) * apofema());
 }
 
 template<typename T>
-inline T Prism<T>::volume()
+inline double Polygon<T>::diagonal()
 {
-	return T(Polygon<T>::area() * hight);
+	return (sqrt(2 * pow(length(), 2) - 4 * length() * cos(radian(angle()))));
 }
 
 template<typename T>
-inline T Prism<T>::diagonal()
+inline double Prism<T>::area()
 {
-	return T(sqrt(pow(Polygon<T>::diagonal(), 2) + pow(hight, 2)));
+	return (2 * Polygon<T>::area() + Polygon<T>::perimeter() * hight);
+}
+
+template<typename T>
+inline double Prism<T>::volume()
+{
+	return (Polygon<T>::area() * hight);
+}
+
+template<typename T>
+inline double Prism<T>::diagonal()
+{
+	return (sqrt(pow(Polygon<T>::diagonal(), 2) + pow(hight, 2)));
 }
 
 #if !defined(_HEADER_H_)
