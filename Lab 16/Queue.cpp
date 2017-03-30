@@ -20,7 +20,6 @@ Queue::QueueException::QueueException(const int id, const char* message) : Excep
 void Queue::QueueException::display() const
 {
 	std::cerr << "Exception - #" << std::hex << std::uppercase << id << ", " << message << std::endl;
-	system("pause");
 }
 
 Queue::Node::Node() : str(nullptr), next(nullptr) {}
@@ -44,10 +43,21 @@ Queue::Queue() : head(nullptr), tail(nullptr) {}
 
 Queue::~Queue()
 {
-	while (head)
+	try
 	{
-		DeleteBegin();
+		if (!head)
+			throw QueueException(0x1, "Queue is empty!");
+		while (head)
+		{
+			DeleteBegin();
+		}
+		std::cout << "\t Queue is clear" << std::endl;
 	}
+	catch (const QueueException& e)
+	{
+		e.display();
+	}
+	
 }
 
 void Queue::Put(const char * str)
@@ -99,17 +109,21 @@ char * Queue::Get()
 
 void Queue::Print() const
 {
-	Node* temp = head;
-	int i = 1;
-	while (temp)
+	try
 	{
-		std::cout << i << ") " << temp->str << std::endl;
-		i++;
-		temp = temp->next;
+		if (!head)
+			throw QueueException(0x1, "Queue is empty");
+		Node* temp = head;
+		int i = 1;
+		while (temp)
+		{
+			std::cout << i << ") " << temp->str << std::endl;
+			i++;
+			temp = temp->next;
+		}
 	}
-}
-
-bool Queue::Empty() const
-{
-	return !head;
+	catch (const QueueException& e)
+	{
+		e.display();
+	}
 }

@@ -43,7 +43,6 @@ public:
 	void Put(const char* str);
 	char* Get();
 	void Print() const;
-	bool Empty() const;
 };
 
 #if !defined(_QUEUE_H_)
